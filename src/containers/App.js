@@ -20,14 +20,15 @@ class App extends React.Component {
     }
 
     removeTodo(id) {
-        const remainder = this.state.data.filter(todo => todo.id !== id);
+        const remainder = this.state.data.filter(todo => todo.id !== id);//zwróci wszystie oprócz tego którego identyfikator się zgadza z odrzuconym
         this.setState({data: remainder});
     }
 
     render() {
         return (
             <div className={style.TodoApp}>
-                <Title/>
+                <Title title={'To do'}/>
+                <TodoList />
             </div>
         ); //zastosowanie loadera
     }
