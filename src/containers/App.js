@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
-// import style from './App.css';
+import style from './App.css';
 import Title from '../components/Title';
+import TodoForm from '../components/TodoForm.js';
 import TodoList from '../components/TodoList.js';
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
         }
     }
 
-    addTodo = (val) => {
+    addTodo (val) {
         const Todo = {
             text: val,
             id: uuid.v4(),
@@ -46,7 +47,8 @@ class App extends Component {
         return (
             <div className={style.TodoApp}>
                 <Title title={'To do'}/>
-                <TodoList dataElements = {this.state.dataElements} removeTodo={(id) => this.removeTodo(id)} />
+                <TodoForm addTodo={this.addTodo.bind(this)}/>
+                <TodoList dataElements = {this.state.dataElements} removeTodo={this.removeTodo.bind(this)} />
             </div>
         );
     }

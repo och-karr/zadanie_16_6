@@ -7,8 +7,9 @@ const TodoList = (props) => (
        {props.dataElements.map((dataElements, i) => (
            <Todo
                key={i}
+               id={dataElements.id}
                name={dataElements.text}
-               removeTodo={(id) => props.removeTodo(id)}
+               removeTodo={props.RemoveTodo}
            />)
        )}
    </ul>

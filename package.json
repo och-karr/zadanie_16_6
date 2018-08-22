@@ -6,7 +6,7 @@
   "scripts": {
     "build-dev": "webpack --env development",
     "build-prod": "webpack --env production",
-    "start": "http-server"
+    "start": "http-server build"
   },
   "keywords": [],
   "author": "",
