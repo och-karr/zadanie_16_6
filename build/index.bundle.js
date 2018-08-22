@@ -6622,7 +6622,7 @@ var Todo = function Todo(props) {
     _react2.default.createElement(
       "span",
       { className: "Todo_text" },
-      props.text
+      props.name
     ),
     _react2.default.createElement(
       "span",
