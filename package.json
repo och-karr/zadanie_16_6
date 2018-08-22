@@ -1,10 +1,12 @@
 {
-  "name": "zadanie_16_4",
+  "name": "zadanie_16_6",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack"
+    "build-dev": "webpack --env development",
+    "build-prod": "webpack --env production",
+    "start": "http-server"
   },
   "keywords": [],
   "author": "",

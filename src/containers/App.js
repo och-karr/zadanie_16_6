@@ -1,36 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import uuid from 'uuid';
-import style from './App.css';
+// import style from './App.css';
 import Title from '../components/Title';
+import TodoList from '../components/TodoList.js';
 
-class App extends React.Component {
-    constructor(props){
+class App extends Component {
+    constructor(props) {
         super(props);
+            
         this.state = {
-            data: []
-        };
+            dataElements: [
+                {
+                    id: 1,
+                    text: 'clean room'
+                }, 
+                {
+                    id: 2,
+                    text: 'wash the dishes'
+                }, 
+                {
+                    id: 3,
+                    text: 'feed my cat'
+                }
+            ]
+        }
     }
-    addTodo(val){
-        const todo = {
+
+    addTodo = (val) => {
+        const Todo = {
             text: val,
             id: uuid.v4(),
-        };
-        const data = [...this.state.data, todo];
-        this.setState({data}); //czyli data:data tylko w es6
+        }
+        this.setState({
+            dataElements: [...this.state.dataElements, Todo]
+        })
     }
 
     removeTodo(id) {
-        const remainder = this.state.data.filter(todo => todo.id !== id);//zwróci wszystie oprócz tego którego identyfikator się zgadza z odrzuconym
-        this.setState({data: remainder});
+        this.setState({
+            dataElements: [...this.state.dataElements.filter(Todo => Todo.id !== id)]
+        })
     }
 
     render() {
         return (
             <div className={style.TodoApp}>
                 <Title title={'To do'}/>
-                <TodoList />
+                <TodoList dataElements = {this.state.dataElements} removeTodo={(id) => this.removeTodo(id)} />
             </div>
-        ); //zastosowanie loadera
+        );
     }
 }
 

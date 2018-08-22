@@ -7,7 +7,7 @@ const plugins = [new HtmlWebpackPlugin({
     inject: 'body'
 })];
 
-module.exports = (env) => {
+module.exports = (env = 'development') => {
     if (env === 'production') {
         plugins.push(
             new OptimizeJsPlugin({
@@ -22,6 +22,8 @@ module.exports = (env) => {
             path: path.resolve(__dirname, 'build'),
             filename: 'index.bundle.js'
         },
+        mode: env,
+        devtool: env !== 'production' ? 'source-map' : '',
         module: {
             rules: [
                 {
@@ -42,6 +44,7 @@ module.exports = (env) => {
                 }
             ],
         },
+        devtool: 'source-map',
         plugins: plugins
     }
 };
