@@ -4,7 +4,7 @@ import React from 'react';
 const Todo = (props) => (
   <li className="Todo">
     <span className="Todo_text">{props.name}</span>
-    <span className="Todo_delete_button" onClick={() => props.removeTodo(props.id)} ><button>usun</button></span>
+    <span className="Todo_delete_button" ><button onClick={() => props.removeTodo(props.id)}>usun</button></span>
   </li>
 );
 

@@ -9,7 +9,7 @@ const TodoList = (props) => (
                key={i}
                id={dataElements.id}
                name={dataElements.text}
-               removeTodo={props.RemoveTodo}
+               removeTodo={props.removeTodo}
            />)
        )}
    </ul>

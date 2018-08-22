@@ -6626,12 +6626,12 @@ var Todo = function Todo(props) {
     ),
     _react2.default.createElement(
       "span",
-      { className: "Todo_delete_button", onClick: function onClick() {
-          return props.removeTodo(props.id);
-        } },
+      { className: "Todo_delete_button" },
       _react2.default.createElement(
         "button",
-        null,
+        { onClick: function onClick() {
+            return props.removeTodo(props.id);
+          } },
         "usun"
       )
     )
@@ -6723,7 +6723,7 @@ var TodoList = function TodoList(props) {
                 key: i,
                 id: dataElements.id,
                 name: dataElements.text,
-                removeTodo: props.RemoveTodo
+                removeTodo: props.removeTodo
             });
         })
     );
