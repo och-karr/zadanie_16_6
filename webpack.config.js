@@ -23,6 +23,11 @@ module.exports = (env = 'development') => {
             filename: 'index.bundle.js'
         },
         mode: env,
+        test: /\.js$/,
+        loader: "babel-loader",
+        options: {
+            plugins: env !== 'production' ? ["react-hot-loader/babel"] : []
+        },
         devtool: env !== 'production' ? 'source-map' : '',
         module: {
             rules: [

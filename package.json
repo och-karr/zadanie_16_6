@@ -6,7 +6,7 @@
   "scripts": {
     "build-dev": "webpack --env development",
     "build-prod": "webpack --env production",
-    "start": "http-server build"
+    "start": "webpack-dev-server --hot --env development"
   },
   "keywords": [],
   "author": "",
@@ -24,9 +24,11 @@
     "optimize-js-plugin": "0.0.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-hot-loader": "^4.3.4",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.0",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
     "uuid": "^3.3.2"
