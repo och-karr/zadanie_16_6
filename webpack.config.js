@@ -7,7 +7,7 @@ const plugins = [new HtmlWebpackPlugin({
     inject: 'body'
 })];
 
-module.exports = (env) => {
+module.exports = (env = 'development') => {
     if (env === 'production') {
         plugins.push(
             new OptimizeJsPlugin({
@@ -16,39 +16,38 @@ module.exports = (env) => {
         )
     };
 
-	const environment = env || 'production';
-
-	return {
-		mode: environment,
-		entry: './src/index.js',
-		output: {
-			path: path.resolve(__dirname, 'build'),
-			filename: 'app.' + environment + '.bundle.js'
-		},
-		module: {
-			rules: [
-				{
-test: /\.js$/,
-loader: "babel-loader",
-options: {
-    plugins: env !== 'production' ? ["react-hot-loader/babel"] : []
-}
-				},
-				{
-					test: /\.css$/,
-					use: [
-						{loader: 'style-loader'},
-						{
-							loader: 'css-loader',
-							options: {
-								modules: true
-							}
-						}
-					]
-				}
-			]
-		},
-		plugins: plugins
-
-	}	
+    return {
+        entry: './src/index.js',
+            output: {
+            path: path.resolve(__dirname, 'build'),
+            filename: 'index.bundle.js'
+        },
+        mode: env,
+        devtool: env !== 'production' ? 'source-map' : '',
+        module: {
+            rules: [
+                {
+                    test: /\.js$/,
+                    loader: "babel-loader",
+                    options: {
+                        plugins: env !== 'production' ? ["react-hot-loader/babel"] : []
+                    } 
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        { loader: 'style-loader'},
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true
+                            }
+                        }
+                    ]
+                }
+            ],
+        },
+        devtool: 'source-map',
+        plugins: plugins
+    }
 };
